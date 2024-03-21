@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    <style>
+        h2 {
+            color: blue;
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+        }
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ titulo }}</h2>
+    <form action="{% url 'encuesta:enviar' %}" method="post">
+        {% csrf_token %}
+        Nombre:
+        <input type="text" name="nombre" maxlength="50"><br>
+        Contraseña:
+        <input type="password" name="password"><br>
+        Educacion:
+        <select name="educacion">
+            <option value="sin-estudios">Sin estudios</option>
+            <option value="educacion-obligatoria" selected="selected">Educación Obligatoria</option>
+            <option value="formacion-profesional">Formación profesional</option>
+            <option value="universidad">Universidad</option>
+        </select> <br>
+        Nacionalidad:
+        <input type="radio" name="nacionalidad" value="hispana">Hispana</input>
+        <input type="radio" name="nacionalidad" value="otra">Otra</input><br>
+        Idiomas:
+        <input type="checkbox" name="idiomas" value="español" checked="checked">Español</input>
+        <input type="checkbox" name="idiomas" value="inglés">Inglés</input>
+        <input type="checkbox" name="idiomas" value="francés">Francés</input>
+        <input type="checkbox" name="idiomas" value="aleman">Alemán</input><br>
+        Email:
+        <input type="text" name="email"><br>
+        Sitio Web:
+        <input type="text" name="sitioweb"><br>
+        <!-- Botón de enviar -->
+        <input type="submit" name="submit" value="Enviar">
+    </form>
+</body>
+</html>

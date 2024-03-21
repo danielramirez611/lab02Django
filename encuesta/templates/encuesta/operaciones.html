@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Matemáticas</title>
+    <style>
+        h2 {
+            color: blue;
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Operaciones Matemáticas</h2>
+    <form action="{% url 'encuesta:calcular' %}" method="post">
+        {% csrf_token %}
+        Primer número: <input type="number" name="numero1"><br>
+        Segundo número: <input type="number" name="numero2"><br>
+        Operación:
+        <select name="operacion">
+            <option value="suma">Suma</option>
+            <option value="resta">Resta</option>
+            <option value="multiplicacion">Multiplicación</option>
+        </select><br>
+        <input type="submit" value="Calcular">
+    </form>
+</body>
+</html>

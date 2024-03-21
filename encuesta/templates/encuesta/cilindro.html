@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Volumen del Cilindro</title>
+    <style>
+        h2 {
+            color: blue;
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calcular Volumen del Cilindro</h2>
+    <form action="{% url 'encuesta:calcular_cilindro' %}" method="post">
+        {% csrf_token %}
+        Altura (metros): <input type="number" name="altura" step="0.01"><br>
+        Diámetro (metros): <input type="number" name="diametro" step="0.01"><br>
+        <input type="submit" value="Calcular">
+    </form>
+</body>
+</html>
